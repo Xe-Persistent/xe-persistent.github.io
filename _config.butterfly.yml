@@ -85,24 +85,24 @@ favicon: /img/favicon.png
 
 # Avatar (頭像)
 avatar:
-  img: https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png
+  img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/avatar.png
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img:
+index_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # If the banner of page not setting, it will show the top_img
-default_top_img:
+default_top_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # The banner image of archive page
-archive_img:
+archive_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img:
+tag_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # The banner image of tag page
 # format:
@@ -139,7 +139,7 @@ error_img:
 error_404:
   enable: true
   subtitle: '页面没有找到'
-  background: https://i.loli.net/2020/05/19/aKOcLiyPl2JQdFD.png
+  background: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/friend-404-page.png
 
 post_meta:
   page: # Home Page
@@ -478,7 +478,7 @@ theme_color:
   meta_color: "#858585"
   hr_color: "#A4D8FA"
   code_foreground: "#F47466"
-  code_background: "rgba(27, 31, 35, .05)"
+  code_background: "#1b1f23"
   toc_color: "#00c4b6"
   blockquote_padding_color: "#49b1f5"
   blockquote_background_color: "#49b1f5"
@@ -491,7 +491,7 @@ theme_color:
 # The position of site info, eg: 300px/300em/300rem/10% (主頁標題距離頂部距離)
 index_site_info_top:
 # The height of top_img, eg: 300px/300em/300rem (主頁top_img高度)
-index_top_img_height: 300px
+index_top_img_height:
 
 # The user interface setting of category and tag page (category和tag頁的UI設置)
 # index - same as Homepage UI (index 值代表 UI將與首頁的UI一樣)
@@ -535,7 +535,7 @@ canvas_fluttering_ribbon:
 # https://github.com/hustcc/canvas-nest.js
 canvas_nest:
   enable: true
-  color: '0,0,255' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
+  color: '73,177,245' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
   opacity: 0.7 # the opacity of line (0~1), default: 0.5.
   zIndex: -1 # z-index property of the background, default: -1.
   count: 99 # the number of lines, default: 99.

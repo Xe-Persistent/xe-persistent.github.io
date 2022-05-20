@@ -86,24 +86,24 @@ favicon: /img/favicon.ico
 
 # Avatar (頭像)
 avatar:
-  img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/avatar.png
+  img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/avatar.png
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+index_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+default_top_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # The banner image of archive page
-archive_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+archive_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+tag_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
 
 # The banner image of tag page
 # format:
@@ -140,7 +140,7 @@ error_img:
 error_404:
   enable: true
   subtitle: '页面没有找到'
-  background: https://cdn.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/friend-404-page.png
+  background: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/friend-404-page.png
 
 post_meta:
   page: # Home Page

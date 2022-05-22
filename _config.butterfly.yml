@@ -9,7 +9,7 @@ menu:
     归档: /archives/ || fa-solid fa-archive
     分类: /categories/ || fa-solid fa-folder-open
   生活||fa-solid fa-icons:
-    杂谈: /article/ || fa-solid fa-book
+    杂谈: /categories/杂谈/ || fa-solid fa-book
     照片: /photos/ || fa-solid fa-camera
     音乐: /music/ || fa-solid fa-compact-disc
     影视: /video/ || fa-solid fa-video
@@ -38,7 +38,7 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  fa-brands fa-github: https://github.com/Xe-Persistent || Github
+  fa-brands fa-github: https://github.com/Xe-Persistent || GitHub
   fa-brands fa-twitter: https://twitter.com/Xe_Persistent || Twitter
   fa-brands fa-weibo: https://weibo.com/u/5226256957 || 微博
   fa-solid fa-envelope: mailto:474663082@qq.com || Email
@@ -726,7 +726,7 @@ darkmode:
   # autoChangeMode: 1  Following System Settings, if the system doesn't support dark mode, it will switch dark mode between 6 pm to 6 am
   # autoChangeMode: 2  Switch dark mode between 6 pm to 6 am
   # autoChangeMode: false
-  autoChangeMode: false
+  autoChangeMode: 1
 
 # Don't modify the following settings unless you know how they work (非必要請不要修改 )
 # Choose: readmode,translate,darkmode,hideAside,toc,chat,comment

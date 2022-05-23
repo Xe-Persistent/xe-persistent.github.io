@@ -15,9 +15,11 @@ keywords: "Git, SSH"
 
 # SSH密钥
 大多数Git教程都会告诉你，生成SSH密钥时在`-C`后输入你在Git中设置`user.email`那里填写的邮箱就可以了，而且在很多教程里都会看到这行命令：
-```
+
+```powershell
 ssh-keygen -t rsa -C "username@email.com"
 ```
+
 你看，命令都是这么写的，让你输入一个邮箱，是吧。
 
 事实上，ssh-keygen命令中常用的参数是这样解释的：
@@ -30,14 +32,18 @@ ssh-keygen -t rsa -C "username@email.com"
 |-C|添加备注|
 
 我们尝试输入这行命令：
-```
+
+```powershell
 ssh-keygen -t rsa -C "username@email.com"
 ```
+
 以上命令省略了-f参数，因此，运行上面那条命令后会让你输入一个文件名，用于保存刚才生成的SSH key代码，你一般会看到如下的文字：
-```
+
+```powershell
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/yourusername/.ssh/id_rsa): [Press enter]
 ```
+
 不输入文件名，按下回车后，会在你电脑的User文件夹的`.ssh`路径下创建一个加密方式为`rsa`、注释为`username@email.com`的SSH密钥，而且会同时生成一对公钥和私钥，文件名为`id_rsa`，公钥的文件后缀名为`.pub`，私钥没有后缀名。
 
 因此，在生成SSH密钥时，输入邮箱只是起到一个***备注***的作用，填写其他***任意内容***均可，也跟你的Git用户名**没有任何关系**。一台电脑使用**一个**SSH密钥就能访问**多个**远程服务器。

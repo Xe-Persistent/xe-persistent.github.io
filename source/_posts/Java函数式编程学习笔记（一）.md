@@ -143,7 +143,9 @@ Equipment::new
 
 ## 实例
 假设已得到一个实体数组：
-> List<EmissionCalcParamDTO> emissionCalcParams
+```java
+List<EmissionCalcParamDTO> emissionCalcParams
+```
 
 现调用一个入参为数组的`deleteBatchIds()`方法，用于删除多行数据。调用前需先判断数组是否为空，写法如下：
 
@@ -162,5 +164,5 @@ if (CollectionUtils.isNotEmpty(emissionCalcParams)) {
 **非常感谢你的阅读，辛苦了！**
 
 ---
-参考文章： (感谢以下参考资料提供的帮助)
+参考文章： (感谢以下资料提供的帮助)
 - [函数式编程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1252599548343744/1255943847278976)

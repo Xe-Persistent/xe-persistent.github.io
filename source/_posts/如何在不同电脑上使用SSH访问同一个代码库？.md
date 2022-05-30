@@ -97,7 +97,7 @@ Enter file in which to save the key (/Users/yourusername/.ssh/id_rsa): [Press en
 **非常感谢你的阅读，辛苦了！**
 
 ---
-参考文章： (感谢以下参考资料提供的帮助)
+参考文章： (感谢以下资料提供的帮助)
 - [Git教程 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/896043488029600)
 - [ssh-keygen命令详解](https://blog.csdn.net/qq_40932679/article/details/117487540)
 - [对Git用户名与Github账户关系的理解](https://blog.csdn.net/belongtocode/article/details/100716812)

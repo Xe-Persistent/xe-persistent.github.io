@@ -1,11 +1,10 @@
 ---
 title: 如何在不同电脑上使用SSH访问同一个代码库？
 date: 2022-05-22 19:12:22
-updated: 2022-05-23 08:22:23
 tags:
     - Git
     - SSH
-categories: 学习笔记
+categories: Git
 keywords: "Git, SSH"
 ---
 # 前言

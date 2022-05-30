@@ -1,12 +1,11 @@
 ---
 title: Java函数式编程学习笔记（一）
 date: 2022-05-20 15:14:47
-updated: 2022-05-22 19:12:22
 tags:
     - 后端
     - Java
     - Lambda
-categories: 学习笔记
+categories: Java
 keywords: "Java, Lambda"
 ---
 # 前言
@@ -158,7 +157,7 @@ if (CollectionUtils.isNotEmpty(emissionCalcParams)) {
 ```
 
 上面的代码在把实体转换为`id`后又将其组合成数组，作为`deleteBatchIds()`的入参，可以说用一行代码解决了传统写法十几行的工作量。
-> 注意，上述编码过程中还使用到了`Stream`流和`map`方法，并使用**Mybatis-Plus**简化数据库操作，上述代码基于**Spring Boot**框架进行编写。对于以上技术的讲解，请关注博主接下来的学习笔记。
+> 注意，上述编码过程中还使用到了`Stream`流和`map`方法，并使用**Mybatis-Plus**简化数据库操作，上述代码基于**Spring Boot**框架进行编写。对于上述使用到的技术，我将在后面的文章中详细介绍。
 
 ---
 **非常感谢你的阅读，辛苦了！**

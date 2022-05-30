@@ -5,7 +5,7 @@ tags:
     - 后端
     - Java
     - Stream
-categories: 学习笔记
+categories: Java
 keywords: "Java, Stream"
 ---
 # 前言
@@ -276,7 +276,7 @@ List.of("A", "B", "C", "D", "E", "F")
 ```
 
 #### 合并
-将两个`Stream合`并为一个`Stream`可以使用`Stream`的静态方法`concat()`：
+将两个`Stream`合并为一个`Stream`可以使用`Stream`的静态方法`concat()`：
 
 ```java
 Stream<String> s1 = List.of("A", "B", "C").stream();
@@ -385,7 +385,7 @@ String[] array = list.stream().toArray(String[]::new);
 注意到传入的*构造方法*是`String[]::new`，它的签名实际上是`IntFunction<String[]>`定义的`String[] apply(int)`，即传入`int`参数，获得`String[]`数组的返回值。
 
 ### 输出为Map
-如果我们要把`Stream`的元素收集到`Map`中，就稍微麻烦一点。因为对于每个元素，添加到`Map`时需要`key`和`value`，因此，我们要指定两个映射函数，分别把元素映射为`key`和`value`：
+如果我们要把`Stream`的元素收集到`Map`中，就稍微麻烦一点。因为对于每个元素，添加到`Map`时都需要`key`和`value`，因此，我们要指定两个映射函数，分别把元素映射为`key`和`value`：
 
 ```java
 public class Main {
@@ -414,8 +414,8 @@ public class Main {
 分组输出使用`Collectors.groupingBy()`，它需要提供两个函数：一个是分组的`key`，这里使用`s -> s.substring(0, 1)`，表示只要首字母相同的`String`分到一组，第二个是分组的`value`，这里直接使用`Collectors.toList()`，表示输出为`List`，上述代码运行结果如下：
 
 > A=[Apple, Avocado, Apricots],  
-B=[Banana, Blackberry],  
-C=[Coconut, Cherry]  
+> B=[Banana, Blackberry],  
+> C=[Coconut, Cherry]  
 
 ## 小结
 `Stream`提供的常用操作有：
@@ -483,7 +483,7 @@ return deviceList.stream().map(MonitoringDeviceDTO::getId)
 # 题外话
 我编写Java代码使用的`IDE`是`IntelliJ IDEA`。在编写`Stream`的链式操作时适当换行，`IDEA`可以将每一行链式操作得到的**数据类型**显示在行末，清晰地展现出`Stream`的`Pipelining`特点，非常有助于阅读和编写代码。
 
-此外，`IDEA`内置的`Lombok`插件（小辣椒）可以自动生成类的`getter`与`setter`方法，不需要手动重复编写，调用时直接调用就好，且代码自动补全功能会在这些自动生成的方法图标右下角显示一个小辣椒，非常有趣。
+此外，`IDEA`内置的`Lombok`插件（小辣椒）可以自动生成类的`getter`与`setter`方法，不需要手动重复编写，需要时直接调用就好，且代码自动补全功能会在这些自动生成的方法图标右下角显示一个小辣椒，非常有趣。
 
 ---
 **非常感谢你的阅读，辛苦了！**

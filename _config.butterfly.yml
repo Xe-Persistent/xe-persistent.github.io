@@ -10,9 +10,9 @@ menu:
     分类: /categories/ || fa-solid fa-folder-open
   生活||fa-solid fa-icons:
     杂谈: /categories/杂谈/ || fa-solid fa-book
-    照片: /photos/ || fa-solid fa-camera
+    番剧: /bangumis/ || fa-brands fa-bilibili
+    影视: /cinemas/ || fa-solid fa-film
     音乐: /music/ || fa-solid fa-compact-disc
-    影视: /video/ || fa-solid fa-video
   友链: /link/ || fa-solid fa-link
   关于: /about/ || fa-solid fa-user
 

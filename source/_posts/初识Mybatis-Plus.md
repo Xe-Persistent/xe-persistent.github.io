@@ -50,60 +50,6 @@ public class MonitoringDeviceDTO extends ModelDTO {
 }
 ```
 
-> MaintenanceRecordDTO.java
-```java
-@EqualsAndHashCode(callSuper = true)
-@TableName("maintenancerecord")
-@Data
-public class MaintenanceRecordDTO extends ModelDTO {
-    @JsonProperty("deviceid")
-    private Long deviceId;
-
-    @JsonProperty("userid")
-    private Long userId;
-
-    private Long date;
-
-    private String illustrate;
-}
-```
-
-> determineDTO.java
-```java
-@EqualsAndHashCode(callSuper = true)
-@Data
-@TableName(value = "determine")
-public class DetermineDTO extends ModelDTO {
-    @JsonProperty(value = "calcparamid")
-    private Long calcParamId;
-
-    @JsonProperty(value = "deviceid")
-    private Long deviceId;
-
-    @JsonProperty(value = "obtainingmethod")
-    private Integer obtainingMethod;
-
-    private String code;
-}
-```
-
-> EmissionCalcParamDTO.java
-```java
-@EqualsAndHashCode(callSuper = true)
-@Data
-@TableName("emissioncalcparam")
-public class EmissionCalcParamDTO extends ModelDTO {
-    private String code;
-
-    private String description;
-
-    @JsonProperty(value = "defaultvalue")
-    private Double defaultValue;
-
-    private String unit;
-}
-```
-
 ## Mapper
 Mapper的编写非常简单，只需继承BaseMapper即可，以MonitoringDeviceMapper为例：
 > MonitoringDeviceMapper.java
@@ -119,7 +65,10 @@ public class MonitoringDeviceMapper extends BaseMapper<MonitoringDeviceDTO> {
 > CRUD是指做计算处理时的增加(Create)、读取查询(Retrieve)、更新(Update)和删除(Delete)几个单词的首字母简写。代表了数据库或者持久层的基本操作功能。
 
 首先是增加和编辑数据的逻辑。这里为了便于维护代码，我定义了RequestBody作为两个方法的入参。此外添加了判断字段是否合法的逻辑。
+
 由于DTO与RequestBody都是JavaBean，可以使用BeanUtils的copyProperties()方法将RequestBody的参数复制给DTO。
+
+在编辑方法中，使用链式条件构造器`LambdaQueryChainWrapper`根据传入的实体id查询数据库中是否有对应的数据，再使用`exists()`方法返回布尔值，达到判断编辑的数据是否存在的目的。
 > MonitoringDeviceService.java
 ```java
 public Boolean addDevice(AddMonitoringDeviceReq device) {
@@ -141,15 +90,6 @@ public MonitoringDeviceDTO editDevice(EditMonitoringDeviceReq device) {
     MonitoringDeviceDTO instance = new MonitoringDeviceDTO();
     BeanUtils.copyProperties(device, instance);
     return monitoringDeviceMapper.insert(instance);
-}
-```
-> MaintenanceRecordService.java
-```java
-public Boolean addRecord(AddMaintenanceRecordReq record) {
-    MaintenanceRecordDTO instance = new MaintenanceRecordDTO();
-    BeanUtils.copyProperties(record, instance);
-    maintenanceRecordMapper.insert(instance);
-    return true;
 }
 ```
 
@@ -195,4 +135,5 @@ public Boolean addRecord(AddMaintenanceRecordReq record) {
 
 ---
 参考文章： (感谢以下资料提供的帮助)
-- []()
+- [MyBatis-Plus LambdaQueryWrapper使用说明](https://blog.csdn.net/qlzw1990/article/details/116996422)
+- [Mybatis plus 之 QueryWrapper、LambdaQueryWrapper、LambdaQueryChainWrapper](https://adong.blog.csdn.net/article/details/122154137)

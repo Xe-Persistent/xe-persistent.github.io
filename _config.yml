@@ -81,7 +81,7 @@ bangumi:
   show: 1
   lazyload: true
   loading:
-  metaColor:
+  metaColor: '#49B1F5'
   color:
   webp: true
   progress: true
@@ -100,7 +100,7 @@ cinema:
   show: 1
   lazyload: true
   loading:
-  metaColor:
+  metaColor: '#49B1F5'
   color:
   webp: true
   progress: true

@@ -86,24 +86,24 @@ favicon: /img/favicon.ico
 
 # Avatar (頭像)
 avatar:
-  img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/avatar.png
+  img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/avatar.webp
   effect: false
 
 # Disable all banner image
 disable_top_img: false
 
 # The banner image of home page
-index_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+index_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+default_top_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
 
 # The banner image of archive page
-archive_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+archive_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.png
+tag_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
 
 # The banner image of tag page
 # format:
@@ -140,7 +140,7 @@ error_img:
 error_404:
   enable: true
   subtitle: '页面没有找到'
-  background: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/friend-404-page.png
+  background: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/friend-404-page.webp
 
 post_meta:
   page: # Home Page
@@ -251,7 +251,7 @@ addThis:
 # Share.js
 # https://github.com/overtrue/share.js
 sharejs:
-  enable: true
+  enable: false
   sites: facebook,twitter,wechat,weibo,qq
 
 # AddToAny
@@ -889,18 +889,18 @@ CDN:
     # canvas_nest:
     # lazyload:
     # instantpage:
-    # typed:
+    typed: https://npm.elemecdn.com/typed.js/lib/typed.js
     # pangu:
-    # fancybox_css_v4:
-    # fancybox_v4:
+    fancybox_css_v4: https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.css
+    fancybox_v4: https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.umd.js
     # medium_zoom:
-    # snackbar_css:
-    # snackbar:
+    snackbar_css: https://npm.elemecdn.com/node-snackbar/dist/snackbar.min.css
+    snackbar: https://npm.elemecdn.com/node-snackbar/dist/snackbar.js
     # activate_power_mode:
     # fireworks:
     # click_heart:
     # ClickShowText:
-    # fontawesomeV6:
+    fontawesomeV6: https://npm.elemecdn.com/@fortawesome/fontawesome-free@6/css/all.min.css
     # flickr_justified_gallery_js:
     # flickr_justified_gallery_css:
     # aplayer_css:

@@ -38,10 +38,9 @@ copy:
 # formal:
 #   icon: link || the description
 social:
-  fa-brands fa-github: https://github.com/Xe-Persistent || GitHub
-  fa-brands fa-twitter: https://twitter.com/Xe_Persistent || Twitter
-  fa-brands fa-weibo: https://weibo.com/u/5226256957 || 微博
   fa-solid fa-envelope: mailto:474663082@qq.com || Email
+  fa-brands fa-weibo: https://weibo.com/u/5226256957 || 微博
+  fa-brands fa-twitter: https://twitter.com/Xe_Persistent || Twitter
 
 # search (搜索)
 # see https://butterfly.js.org/posts/ceeb73f/#搜索系統
@@ -90,20 +89,20 @@ avatar:
   effect: false
 
 # Disable all banner image
-disable_top_img: false
+disable_top_img: ture
 
 # The banner image of home page
-index_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
+index_img: 
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
+default_top_img: 
 
 # The banner image of archive page
-archive_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
+archive_img: 
 
 # If the banner of tag page not setting, it will show the top_img
 # note: tag page, not tags page (子標籤頁面的 top_img)
-tag_img: https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/default.webp
+tag_img: 
 
 # The banner image of tag page
 # format:
@@ -503,7 +502,7 @@ tag_ui: # 留空或 index
 # Website Background (設置網站背景)
 # can set it to color or image (可設置圖片 或者 顔色)
 # The formal of image: url(http://xxxxxx.com/xxx.jpg)
-background:
+background: url(https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/background/msi-gwen.webp)
 
 # Footer Background
 footer_bg: false
@@ -535,9 +534,9 @@ canvas_fluttering_ribbon:
 # canvas_nest
 # https://github.com/hustcc/canvas-nest.js
 canvas_nest:
-  enable: true
+  enable: false
   color: '73,177,245' #color of lines, default: '0,0,0'; RGB values: (R,G,B).(note: use ',' to separate.)
-  opacity: 0.9 # the opacity of line (0~1), default: 0.5.
+  opacity: 0.7 # the opacity of line (0~1), default: 0.5.
   zIndex: -1 # z-index property of the background, default: -1.
   count: 99 # the number of lines, default: 99.
   mobile: false
@@ -619,13 +618,13 @@ subtitle:
   source: false
   # 如果關閉打字效果，subtitle 只會顯示 sub 的第一行文字
   sub:
-    - 欢迎来到我的世界 !
-    - Welcome to My World !
+    - 欢迎来到我的世界！
+    - Welcome to My World!
     - 今日事，今日毕。
-    - Never put off till tomorrow what you can do today.
+    - Never put off till tomorrow.
 
 # Loading Animation (加載動畫)
-preloader: true
+preloader: false
 
 # aside (側邊欄)
 # --------------------------------------
@@ -635,15 +634,15 @@ aside:
   hide: false
   button: true
   mobile: true # display on mobile
-  position: left # left or right
+  position: right # left or right
   archives: true
   card_author:
     enable: true
     description:
     button:
-      enable: false
+      enable: true
       icon: fa-brands fa-github
-      text: Follow Me
+      text: 关注我的GitHub
       link: https://github.com/Xe-Persistent
   card_announcement:
     enable: true

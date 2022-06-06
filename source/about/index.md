@@ -1,5 +1,5 @@
 ---
-title: 关于我
+title: 关于
 date: 2022-05-12 00:00:00
 updated: 2022-05-22 19:12:22
 type: "about"

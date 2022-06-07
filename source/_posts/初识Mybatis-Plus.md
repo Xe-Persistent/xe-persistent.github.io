@@ -94,40 +94,102 @@ public MonitoringDeviceDTO editDevice(EditMonitoringDeviceReq device) {
 ```
 
 然后是查询数据的逻辑，
+```java
+public MonitoringDeviceDTO getDeviceById(Long deviceId) {
+    if (Objects.isNull(deviceId)) {
+        return null;
+    }
+    return monitoringDeviceMapper.selectById(deviceId);
+}
+
+public MonitoringDeviceDTO getDeviceByParamId(Long paramId) {
+    if (Objects.isNull(paramId)) {
+        return null;
+    }
+    return getDeviceById(new LambdaQueryChainWrapper<>(determineMapper)
+            .eq(DetermineDTO::getCalcParamId, paramId)
+            .one().getDeviceId());
+}
+
+public List<MonitoringDeviceDTO> getDeviceByType(String type) {
+    if (!DetermineEnum.isInclude(type)) {
+        throw new ParamException("排放参数不支持");
+    }
+    return new LambdaQueryChainWrapper<>(monitoringDeviceMapper)
+            .eq(MonitoringDeviceDTO::getType, type).list();
+}
+
+public List<MonitoringDeviceDTO> getDeviceBySource(Long sourceId) {
+    boolean exists = new LambdaQueryChainWrapper<>(emissionSourceMapper)
+            .eq(EmissionSourceDTO::getId, sourceId).exists();
+    if (!exists) {
+        throw new NotFoundException("排放源不存在");
+    }
+    List<EmissionCalcParamDTO> emissionCalcParams = emissionSourceCalcParamMapper
+            .selectList(new QueryWrapper<>(EmissionCalcParamDTO.class)
+                    .treeNode(ModelLabelConstant.EMISSION_SOURCE, sourceId));
+    if (CollectionUtils.isEmpty(emissionCalcParams)) {
+        throw new DefaultCarbonException("该排放源的排放参数异常");
+    }
+    List<Long> paramIdList = emissionCalcParams.stream()
+            .map(EmissionCalcParamDTO::getId)
+            .collect(Collectors.toList());
+    List<DetermineDTO> determineList = new LambdaQueryChainWrapper<>(determineMapper)
+            .eq(DetermineDTO::getObtainingMethod, 2)
+            .in(DetermineDTO::getCalcParamId, paramIdList)
+            .list();
+    return determineList.stream()
+            .map(DetermineDTO::getDeviceId)
+            .map(this::getDeviceById)
+            .collect(Collectors.toList());
+}
+```
+最后是删除数据的逻辑
+```java
+public Boolean deleteDevice(Long deviceId) {
+    List<MaintenanceRecordDTO> records = maintenanceRecordService.getRecordByDeviceId(deviceId);
+    if (CollectionUtils.isNotEmpty(records)) {
+        monitoringDeviceMapper.deleteBatchIds(records.stream()
+                .map(MaintenanceRecordDTO::getId)
+                .collect(Collectors.toList()));
+    }
+    return monitoringDeviceMapper.deleteById(deviceId) == 1;
+}
+```
 
 # 小结
-| 函数名      | SQL                             | 函数例子                                                       | SQL例子                                            |
-| :---------- | :------------------------------ | :------------------------------------------------------------- | :------------------------------------------------- |
-| eq          | 等于=                           | eq("name", "老王)                                              | name = '老王'                                      |
-| ne          | 不等于<>                        | ne("name", "老王)                                              | name <> '老王'                                     |
-| gt          | 大于>                           | gt("age", 18)                                                  | age > 18                                           |
-| e           | 大于等于>=                      | ge("age", 18)                                                  | age >= 18                                          |
-| t           | 小于<                           | It("age", 18)                                                  | age < 18                                           |
-| e           | 小于<=                          | le("age", 18)                                                  | age <= 18                                          |
-| between     | BETWEEN 值1 AND 值2             | between("age", 18, 30)                                         | age between 18 and 30                              |
-| notBetween  | NOT BETWEEN 值1 AND 值2         | notBetween("age", 18, 30)                                      | age not between 18 and 30                          |
-| like        | LIKE '%值%'                     | like("name", "王")                                             | name like '%王%'                                   |
-| notLike     | NOT LIKE '%值%'                 | notlike("name", "王")                                          | name not like '%王%'                               |
-| likeLeft    | LIKE '%值'                      | likeLeft("name", "王")                                         | name like '%王'                                    |
-| likeRight   | LIKE '值%'                      | likeRight("name", "王")                                        | name like '王%'                                    |
-| isNull      | 字段 IS NULL                    | isNull("name")                                                 | name is null                                       |
-| isNotNull   | 字段 IS NOT NULL                | isNotNull("name")                                              | name is not null                                   |
-| in          | 字段 IN (v0, v1, ...)           | in("age", {1, 2, 3})                                           | age in (1, 2, 3)                                   |
-| notIn       | 字段 NOT IN (v0, v1, ...)       | notIn("age", {1, 2, 3})                                        | age not in (1, 2, 3)                               |
-| inSql       | 字段 IN(sql语句)                | inSql("id", "select id from table where id < 3")               | id in (select id from table where id < 3)          |
-| notInSql    | 字段 NOT IN (sql语句)           | notInSql("id", "select id from table where id < 3")            | age not in (select id from table where id < 3)     |
-| groupBy     | 分组 GROUP BY 字段, ...         | groupBy("id", "name")                                          | group by id, name                                  |
-| orderByAsc  | 排序 ORDER BY 字段, ... ASC     | orderByAsc("id", "name")                                       | order by id ASC, name ASC                          |
-| orderByDesc | 排序 ORDER BY 字段, ... DESC    | orderByDesc("id", "name")                                      | order by id DESC, name DESC                        |
-| orderBy     | 排序 ORDER BY 字段, ...         | orderBy(true, true, "id", "name")                              | order by id ASC, name ASC                          |
-| having      | HAVING (sql语句)                | having("sum(age) > {0}", 11)                                   | having sum(age) > 11                               |
-| or          | 拼接 OR                         | eq("id", 1).or().eq("name", "老王")                            | id = 1 or name = '老王                             |
-| and         | AND 嵌套                        | and(i -> i.eq("name", "李白").ne("status", "活着"))            | and (name = '李白' and status <> '活着')           |
-| apply       | 拼接sql                         | apply("date_format(dateColumn, '%Y-%m-%d')={0}", "2008-08-08") | date_format(dateColumn,'%Y-%m-%d') = '2008-08-08') |
-| last        | 无视优化规则直接拼接到sql的最后 | last("limit 1")                                                |                                                    |
-| exists      | 拼接 EXISTS (sql语句)           | exists("select id from table where age = 1")                   | exists (select id from table where age = 1)        |
-| notExists   | 拼接 NOT EXISTS (sql语句)       | notExists("select id from table where age = 1")                | not exists (select id from table where age = 1)    |
-| nested      | 正常嵌套不带AND或者0R           | nested(i -> i.eq("name", "李白"). ne("status", "活着"))        | (name = '李白' and status <> '活着')               |
+| 函数名         | SQL                      | 函数例子                                                           | SQL例子                                              |
+|:------------|:-------------------------|:---------------------------------------------------------------|:---------------------------------------------------|
+| eq          | 等于=                      | eq("name", "老王)                                                | name = '老王'                                        |
+| ne          | 不等于<>                    | ne("name", "老王)                                                | name <> '老王'                                       |
+| gt          | 大于>                      | gt("age", 18)                                                  | age > 18                                           |
+| e           | 大于等于>=                   | ge("age", 18)                                                  | age >= 18                                          |
+| t           | 小于<                      | It("age", 18)                                                  | age < 18                                           |
+| e           | 小于<=                     | le("age", 18)                                                  | age <= 18                                          |
+| between     | BETWEEN 值1 AND 值2        | between("age", 18, 30)                                         | age between 18 and 30                              |
+| notBetween  | NOT BETWEEN 值1 AND 值2    | notBetween("age", 18, 30)                                      | age not between 18 and 30                          |
+| like        | LIKE '%值%'               | like("name", "王")                                              | name like '%王%'                                    |
+| notLike     | NOT LIKE '%值%'           | notLike("name", "王")                                           | name not like '%王%'                                |
+| likeLeft    | LIKE '%值'                | likeLeft("name", "王")                                          | name like '%王'                                     |
+| likeRight   | LIKE '值%'                | likeRight("name", "王")                                         | name like '王%'                                     |
+| isNull      | 字段 IS NULL               | isNull("name")                                                 | name is null                                       |
+| isNotNull   | 字段 IS NOT NULL           | isNotNull("name")                                              | name is not null                                   |
+| in          | 字段 IN (v0, v1, ...)      | in("age", {1, 2, 3})                                           | age in (1, 2, 3)                                   |
+| notIn       | 字段 NOT IN (v0, v1, ...)  | notIn("age", {1, 2, 3})                                        | age not in (1, 2, 3)                               |
+| inSql       | 字段 IN(sql语句)             | inSql("id", "select id from table where id < 3")               | id in (select id from table where id < 3)          |
+| notInSql    | 字段 NOT IN (sql语句)        | notInSql("id", "select id from table where id < 3")            | age not in (select id from table where id < 3)     |
+| groupBy     | 分组 GROUP BY 字段, ...      | groupBy("id", "name")                                          | group by id, name                                  |
+| orderByAsc  | 排序 ORDER BY 字段, ... ASC  | orderByAsc("id", "name")                                       | order by id ASC, name ASC                          |
+| orderByDesc | 排序 ORDER BY 字段, ... DESC | orderByDesc("id", "name")                                      | order by id DESC, name DESC                        |
+| orderBy     | 排序 ORDER BY 字段, ...      | orderBy(true, true, "id", "name")                              | order by id ASC, name ASC                          |
+| having      | HAVING (sql语句)           | having("sum(age) > {0}", 11)                                   | having sum(age) > 11                               |
+| or          | 拼接 OR                    | eq("id", 1).or().eq("name", "老王")                              | id = 1 or name = '老王                               |
+| and         | AND 嵌套                   | and(i -> i.eq("name", "李白").ne("status", "活着"))                | and (name = '李白' and status <> '活着')               |
+| apply       | 拼接sql                    | apply("date_format(dateColumn, '%Y-%m-%d')={0}", "2008-08-08") | date_format(dateColumn,'%Y-%m-%d') = '2008-08-08') |
+| last        | 无视优化规则直接拼接到sql的最后        | last("limit 1")                                                |                                                    |
+| exists      | 拼接 EXISTS (sql语句)        | exists("select id from table where age = 1")                   | exists (select id from table where age = 1)        |
+| notExists   | 拼接 NOT EXISTS (sql语句)    | notExists("select id from table where age = 1")                | not exists (select id from table where age = 1)    |
+| nested      | 正常嵌套不带AND或者0R            | nested(i -> i.eq("name", "李白"). ne("status", "活着"))            | (name = '李白' and status <> '活着')                   |
 
 
 ---

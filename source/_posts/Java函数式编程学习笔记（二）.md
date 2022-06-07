@@ -420,13 +420,13 @@ public class Main {
 ## 小结
 `Stream`提供的常用操作有：
 
-|类型|方法|
-|:---|:---|
-|转换操作|`map()`，`filter()`，`sorted()`，`distinct()`|
-|合并操作|`concat()`，`flatMap()`|
-|并行处理|`parallel()`|
-|聚合操作|`reduce()`，`collect()`，`count()`，`max()`，`min()`，`sum()`，`average()`|
-|其他操作|`allMatch()`，`anyMatch()`，`forEach()`|
+| 类型   | 方法                                                                   |
+|:-----|:---------------------------------------------------------------------|
+| 转换操作 | `map()`，`filter()`，`sorted()`，`distinct()`                           |
+| 合并操作 | `concat()`，`flatMap()`                                               |
+| 并行处理 | `parallel()`                                                         |
+| 聚合操作 | `reduce()`，`collect()`，`count()`，`max()`，`min()`，`sum()`，`average()` |
+| 其他操作 | `allMatch()`，`anyMatch()`，`forEach()`                                |
 
 # 应用
 ## 需求规格

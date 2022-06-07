@@ -1,7 +1,11 @@
 - class_name: 友情链接
   class_desc: 一些有趣的人和事
   link_list:
-    - name: 窦晨
+    - name: 窦晨的博客
       link: https://blog.douchen.life/
       avatar: https://avatars.githubusercontent.com/u/62340860?v=4
       descr: 本科大佬室友，WHU研一
+    - name: 小道听不懂
+      link: https://my.qidian.com/author/431295140/
+      avatar: https://facepic.qidian.com/qd_face/349573/a431295140/0
+      descr: 本科大佬室友，起点网文作家

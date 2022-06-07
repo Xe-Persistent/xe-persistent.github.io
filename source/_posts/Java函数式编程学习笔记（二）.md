@@ -451,7 +451,7 @@ List<Long> paramIdList = emissionCalcParams.stream()
         .collect(Collectors.toList());
 ```
 
-之后，可以根据这些`id`在数据库中查询另一个表的数据：
+之后，可以根据这些`id`在数据库中查询另一个表的数据，这里使用了MyBatis-Plus的条件构造器编写查询条件。
 
 ```java
 List<DetermineDTO> determineList = new LambdaQueryChainWrapper<>(determineMapper)

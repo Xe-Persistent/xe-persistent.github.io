@@ -9,7 +9,7 @@ categories: Java
 keywords: "Java, Lambda"
 ---
 # 前言
-最近在项目中需要使用一些基于Mybatis-Plus封装的CRUD接口，阅读一些文档和代码后发现在Java代码中偶尔会见到C++代码里的**类作用域符号**`::`和`->`**运算符**，查阅资料才了解到这两个符号在Java领域里属于函数式编程的语法内容，于是写下这篇博客以记录这段时间的学习过程。
+最近在项目中需要使用一些基于MyBatis-Plus封装的CRUD接口，阅读一些文档和代码后发现在Java代码中偶尔会见到C++代码里的**类作用域符号**`::`和`->`**运算符**，查阅资料才了解到这两个符号在Java领域里属于函数式编程的语法内容，于是写下这篇博客以记录这段时间的学习过程。
 
 # Java函数式编程
 ## 什么是函数式编程？
@@ -22,7 +22,7 @@ keywords: "Java, Lambda"
 ## Lambda表达式
 Lambda表达式是表示可传递**匿名函数**的一种简洁方式，Lambda表达式没有名称，但是有参数列表、函数主体、返回类型，还可能有一个可以抛出的异常列表。它是Java 8新增的特性，有了它，我们再也不用像以前那样写一堆笨重的匿名类代码了。
 
-在Java中，我们经常遇到**单方法接口**，即***一个接口***只定义了***一个方法***，例如
+在Java中，我们经常遇到**单方法接口**，即***一个接口***只定义了***一个方法***，例如：
 
 > - Comparator
 >
@@ -146,7 +146,7 @@ Equipment::new
 List<EmissionCalcParamDTO> emissionCalcParams
 ```
 
-现调用一个入参为数组的`deleteBatchIds()`方法，用于删除多行数据。调用前需先判断数组是否为空，写法如下：
+现调用一个入参为数组的`deleteBatchIds()`方法，它是MyBatis-Plus提供的接口，用于删除多行数据。调用前需先判断数组是否为空，写法如下：
 
 ```java
 if (CollectionUtils.isNotEmpty(emissionCalcParams)) {
@@ -157,7 +157,7 @@ if (CollectionUtils.isNotEmpty(emissionCalcParams)) {
 ```
 
 上面的代码在把实体转换为`id`后又将其组合成数组，作为`deleteBatchIds()`的入参，可以说用一行代码解决了传统写法十几行的工作量。
-> 注意，上述编码过程中还使用到了`Stream`流和`map`方法，并使用**Mybatis-Plus**简化数据库操作，上述代码基于**Spring Boot**框架进行编写。对于上述使用到的技术，我将在后面的文章中详细介绍。
+> 注意，上述编码过程中还使用到了`Stream`流和`map`方法，并使用`MyBatis-Plus`简化数据库操作，上述代码基于`Spring Boot`框架进行编写。对于上述使用到的技术，我将在后面的文章中详细介绍。
 
 ---
 **非常感谢你的阅读，辛苦了！**

@@ -5,7 +5,7 @@ tags:
     - 后端
     - Java
     - Stream
-categories: Java
+categories: 学习笔记
 keywords: "Java, Stream"
 ---
 # 前言

@@ -4,7 +4,7 @@ date: 2022-05-22 19:12:22
 tags:
     - Git
     - SSH
-categories: Git
+categories: 经验分享
 keywords: "Git, SSH"
 ---
 # 前言

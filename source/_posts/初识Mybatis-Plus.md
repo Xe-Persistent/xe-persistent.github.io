@@ -5,7 +5,7 @@ tags:
     - 后端
     - Java
     - MyBatis-Plus
-categories: Java
+categories: 学习笔记
 keywords: "Java, MyBatis-Plus"
 ---
 # 前言

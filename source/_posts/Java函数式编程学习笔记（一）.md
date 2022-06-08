@@ -5,7 +5,7 @@ tags:
     - 后端
     - Java
     - Lambda
-categories: Java
+categories: 学习笔记
 keywords: "Java, Lambda"
 ---
 # 前言

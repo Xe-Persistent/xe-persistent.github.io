@@ -587,8 +587,8 @@ beautify:
 font:
   global-font-size:
   code-font-size:
-  font-family:
-  code-font-family:
+  font-family: "HarmonyOS_Regular"
+  code-font-family: consolas
 
 # Font settings for the site title and site subtitle
 # 左上角網站名字 主頁居中網站名字
@@ -842,6 +842,8 @@ css_prefix: true
 inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
+    <link rel="preconnect" href="https://s1.hdslb.com/" />
+    <link rel="stylesheet" href="//s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" media="all" onload="this.media='all'" />
   bottom:
     # - <script src="xxxx"></script>
 

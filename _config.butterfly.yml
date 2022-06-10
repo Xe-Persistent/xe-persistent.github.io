@@ -266,7 +266,7 @@ comments:
   # Up to two comments system, the first will be shown as default
   # Choose: Disqus/Disqusjs/Livere/Gitalk/Valine/Waline/Utterances/Facebook Comments/Twikoo/Giscus
   use: 
-    - Gitalk  # (设置gitalk作为评论区)
+    - twikoo # (设置gitalk作为评论区)
   text: true # Display the comment name next to the button
   # lazyload: The comment system will be load when comment element enters the browser's viewport.
   # If you set it to true, the comment count will be invalid
@@ -296,15 +296,11 @@ livere:
 # gitalk
 # https://github.com/gitalk/gitalk
 gitalk:
-  client_id: 107624138c4d90f6095b
-  client_secret: 03578e569663802f31537304ac6f92ed116c0994
-  repo: xe-persistent.github.io
-  owner: Xe-Persistent
-  admin: Xe-Persistent
-  perPage: 10 # Pagination size, with maximum 100.
-  distractionFreeMode: false # Facebook-like distraction free mode.
-  pagerDirection: last # Comment sorting direction, available values are last and first.
-  createIssueManually: true # Gitalk will create a corresponding github issue for your every single page automatically
+  client_id:
+  client_secret:
+  repo:
+  owner:
+  admin:
   option:
 
 # valine
@@ -348,7 +344,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId:
+  envId: hexo-3g2a6pcuce5cc640
   region:
   visitor: false
   option:
@@ -410,7 +406,7 @@ footer:
   owner:
     enable: true
     since: 2022
-  custom_text: <a href="https://xe-persistent.github.io/">Hi, Welcome to My Blog !</a>
+  custom_text: <a href="https://www.dongzhenxian.com">Hi, Welcome to My Blog !</a>
   copyright: true # Copyright of theme and framework
 
 # Analysis
@@ -579,7 +575,7 @@ display_mode: light
 beautify:
   enable: true
   field: post # site/post
-  title-prefix-icon: '\f0c1'
+  title-prefix-icon: '\f13d'
   title-prefix-icon-color: '#F47466'
 
 # Global font settings
@@ -875,7 +871,7 @@ CDN:
     # valine:
     # disqusjs:
     # disqusjs_css:
-    # twikoo:
+    twikoo: https://npm.elemecdn.com/twikoo@1.5.11/dist/twikoo.all.min.js
     # waline_js:
     # waline_css:
     # sharejs:

@@ -2,8 +2,8 @@
 title: 如何使用Git管理hexo博客项目仓库
 date: 2022-06-07 10:36:37
 tags:
-  - Git
-  - 博客
+    - Git
+    - 博客
 categories: 经验分享
 keywords: "Git, 博客"
 ---
@@ -20,9 +20,9 @@ hexo博客项目的使用环境为个人项目，因此无需过多关注多人�
 
 ```yml
 deploy:
-  type: git
-  repository: // 填写你的仓库地址
-  branch: master
+    type: git
+    repository: // 填写你的仓库地址
+    branch: master
 ```
 
 这时，`hexo deploy`命令会将站点文件推送至默认的`master`分支。我们可以在`GitHub`中新建一个`hexo`分支，在本地也新建一个`hexo`分支，然后切换至`hexo`分支，将源代码`push`到远程的`origin/hexo`上，并将其设置为默认分支。这样的好处是每次执行`git clone`命令时无需关注克隆的是哪一个分支，因为默认克隆的是源代码而不是站点文件。之后，每次执行`hexo deploy`，都会创建一个提交信息为部署时间的commit，并刷新页面。

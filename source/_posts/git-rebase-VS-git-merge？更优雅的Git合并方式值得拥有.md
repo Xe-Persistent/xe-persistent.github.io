@@ -66,7 +66,7 @@ git rebase master
 
 rebase的主要好处是可以获得更清晰的项目历史。首先，它消除了`git merge`所需的不必要的合并提交；其次，正如你在上图中所看到的，rebase会产生完美线性的项目历史记录，你可以在`feature`分支上没有任何分叉的情况下一直追寻到项目的初始提交。这样可以通过命令`git log`，`git bisect`和`gitk`更容易地导航查看项目。
 
-但是，针对这样的提交历史我们需要权衡其「安全性」和「可追溯性」。如果你不遵循**Rebase 的黄金法则**，重写项目历史记录可能会对你的协作工作流程造成灾难性后果。而且，rebase会丢失合并提交的上下文，你也就无法看到上游更改是何时合并到feature中的。
+但是，针对这样的提交历史我们需要权衡其「安全性」和「可追溯性」。如果你不遵循**Rebase的黄金法则**，重写项目历史记录可能会对你的协作工作流程造成灾难性后果。而且，rebase会丢失合并提交的上下文，你也就无法看到上游更改是何时合并到feature中的。
 
 ## 交互式Rebase
 交互式rebase使你有机会在将commits移动到新分支时更改这些commits。这比自动rebase更强大，因为它提供了对分支提交历史的完全控制。通常，这用于在合并`feature`分支到 `master`之前清理其杂乱的历史记录。
@@ -100,7 +100,7 @@ pick 5c67e61 Message for commit #3
 
 消除这种无意义的提交使你的功能历史更容易理解。这是`git merge`根本无法做到的事情。至于commits条目前的`pick`、`fixup`、`squash`等命令，在Git目录执行`git rebase -i`即可查看到，大家按需重排或合并提交即可，注释说明非常清晰，在此不做过多说明。
 
-# Rebase 的黄金法则
+# Rebase的黄金法则
 一旦你理解了什么是rebase，最重要的是要学习什么时候不能使用它。`git rebase`的黄金法则是永远不要在公共分支上使用它。
 
 例如，想想如果你rebase`master`分支到`feature`分支之上会发生什么：
@@ -171,7 +171,7 @@ git merge-base feature master
 
 ![合并与变基到远程分支](https://fastly.jsdelivr.net/gh/Xe-Persistent/CDN-source/image/post/git-merge-and-rebase/09.svg)
 
-请注意，此rebase不违反**Rebase 黄金规则**，因为只有你的本地`feature`提交被移动，之前的所有内容都不会受到影响。这就像是说“将我的更改添加到John已经完成的工作中”。在大多数情况下，这比通过合并提交与远程分支同步更直观。
+请注意，此rebase不违反**Rebase 黄金规则**，因为只有你的本地`feature`提交被移动，之前的所有内容都不会受到影响。这就像是说「将我的更改添加到John已经完成的工作中」。在大多数情况下，这比通过合并提交与远程分支同步更直观。
 
 默认情况下，使用`git pull`命令执行合并，但你可以通过向其传递`--rebase`选项来强制它将远程分支以rebase方式集成。
 

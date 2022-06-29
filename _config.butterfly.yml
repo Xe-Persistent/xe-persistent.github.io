@@ -344,7 +344,7 @@ facebook_comments:
 # Twikoo
 # https://github.com/imaegoo/twikoo
 twikoo:
-  envId: hexo-3g2a6pcuce5cc640
+  envId: https://twikoo-comment-lime.vercel.app
   region:
   visitor: false
   option:

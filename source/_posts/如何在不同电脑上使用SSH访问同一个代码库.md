@@ -83,7 +83,7 @@ Enter file in which to save the key (/Users/yourusername/.ssh/id_rsa): [Press en
 > 这里需要注意的是代码托管网站对本地设定的Git用户是如何处理的。代码托管网站主要关注Git用户名`user.email`，用`user.email`来匹配托管平台账户名的**邮件地址**，如果相同，代码托管网站就认为此操作是账户所有者的操作。下面举一个例子：  
 如果本地设定的`user.email`是`personal@qq.com`，由于在GitHub账户的邮件地址也是`personal@qq.com`，如果从这台电脑push的话，GitHub会认定这次push是账户拥有者自己做的；如果本地设定的`user.email`是`company@company.cn`，也能push到GitHub，但GitHub会记录这次的修改是另一个用户名为`company`的人做的。
 
-# 总结
+# 小结
 - 使用ssh-keygen命令产生密钥对，每台电脑有**一对**就够了。
 
 - 在本地生成ssh密钥对时，推荐用**计算机相关信息**而不是用户名作为密钥对的注释。在代码托管网站上，也推荐用这个信息来做密钥对的标题。

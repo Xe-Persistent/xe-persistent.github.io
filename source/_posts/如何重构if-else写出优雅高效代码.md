@@ -191,7 +191,6 @@ public double getAdjustedCapital() {
         return 0.0;
     }
     return (_income / _duration) * ADJ_FACTOR;
-
 }
 ```
 
@@ -354,7 +353,7 @@ class NorwegianBlue extends Bird {
 
 可以看到，使用多态后直接没有了`if-else`，但使用多态对原本代码修改过大，需要下一番功夫才行。最好在设计之初就使用多态方式。
 
-# 总结
+# 小结
 `if-else`代码是每一个程序员最容易写出的代码，同时也是最容易被写烂的代码，稍不注意，就产生一堆难以维护和逻辑混乱的代码。
 
 针对条件型代码重构时刻把握一个原则：

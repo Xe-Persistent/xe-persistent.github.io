@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai'
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://www.dongzhenxian.com
-permalink: post/:hash.html
+permalink: posts/:hash.html
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -68,7 +68,19 @@ index_generator:
 # Category & Tag
 default_category: uncategorized
 category_map:
-tag_map:
+  经验分享: share
+  学习笔记: study
+  杂谈: life
+tag_map: 
+  博客: blog
+  后端: back-end
+  重构: refractor
+  Git: git
+  Java: java
+  Lambda: lambda
+  MyBatis-Plus: mybatis-plus
+  SSH: ssh
+  Stream: stream
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta

@@ -9,7 +9,7 @@ menu:
     标签: /tags/ || fa-solid fa-tags
     分类: /categories/ || fa-solid fa-folder-open
   生活||fa-solid fa-heart-pulse:
-    杂谈: /categories/杂谈/ || fa-solid fa-mug-saucer
+    杂谈: /categories/life/ || fa-solid fa-mug-saucer
     番剧: /bangumis/ || fa-brands fa-bilibili
     影视: /cinemas/ || fa-solid fa-film
     音乐: /music/ || fa-solid fa-headphones-simple
@@ -89,7 +89,7 @@ avatar:
   effect: false
 
 # Disable all banner image
-disable_top_img: ture
+disable_top_img: true
 
 # The banner image of home page
 index_img: 
@@ -696,7 +696,7 @@ runtimeshow:
 
 # Aside widget - Newest Comments
 newest_comments:
-  enable: false
+  enable: true
   sort_order: # Don't modify the setting unless you know how it works
   limit: 6
   storage: 10 # unit: mins, save data to localStorage

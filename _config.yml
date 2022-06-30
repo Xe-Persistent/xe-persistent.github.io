@@ -17,7 +17,7 @@ url: https://www.dongzhenxian.com
 permalink: post/:hash.html
 permalink_defaults:
 pretty_urls:
-  trailing_index: false # Set to false to remove trailing 'index.html' from permalinks
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
   trailing_html: true # Set to false to remove trailing '.html' from permalinks
 
 # Directory
@@ -47,7 +47,7 @@ highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace: '  '
+  tab_replace: '    '
   wrap: true
   hljs: false
 prismjs:

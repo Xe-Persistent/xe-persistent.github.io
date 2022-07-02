@@ -75,6 +75,7 @@ tag_map:
   博客: blog
   后端: back-end
   重构: refractor
+  日记: diary
   Git: git
   Java: java
   Lambda: lambda
